@@ -1,59 +1,42 @@
 "use client";
 
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Cross } from "lucide-react";
-
-const FormSchema = z.object({
-  book: z.string().min(1),
-  //   message: "Book must be at least 3 character long",
-});
+import { FormEvent, useState } from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 function AddBook() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      book: "",
-    },
-  });
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
 
-  function onSubmit() {
-    console.log(form.getValues().book);
-  }
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    console.log(title, author);
+
+    // Empty the input fields
+    setTitle("");
+    setAuthor("");
+  };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="book"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Book</FormLabel>
-              <FormControl>
-                <Input placeholder="Add a book" {...field} autoComplete="off" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">
-          <Cross /> Add
-        </Button>
-      </form>
-    </Form>
+    <form className="flex gap-1 flex-col" onSubmit={handleSubmit}>
+      <Input
+        placeholder="Book title"
+        onChange={(e) => setTitle(e.target.value)}
+        value={title}
+        required
+      />
+      <Input
+        placeholder="Author"
+        onChange={(e) => setAuthor(e.target.value)}
+        value={author}
+        required
+      />
+      <div className="flex gap-1">
+        <Button variant="outline">Sort</Button>
+        <Button>Add</Button>
+      </div>
+    </form>
   );
 }
 
