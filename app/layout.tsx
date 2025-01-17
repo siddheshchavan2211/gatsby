@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${teachers.className} antialiased min-h-[2000px]`}>
+      <body className={`${teachers.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

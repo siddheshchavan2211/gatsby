@@ -21,7 +21,7 @@ function Page() {
       </section>
 
       <section className="mx-auto px-4 ">
-        <ListBooks books={books} />
+        <ListBooks books={books} dispatch={dispatch} />
       </section>
     </main>
   );
