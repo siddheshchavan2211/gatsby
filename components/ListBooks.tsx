@@ -1,14 +1,15 @@
 import SingleBook from "./SingleBook";
 
-function ListBooks() {
+interface ListBooksProps {
+  books: Book[];
+}
+
+function ListBooks({ books }: ListBooksProps) {
   return (
     <div className="flex flex-wrap gap-2 justify-center">
-      <SingleBook />
-      <SingleBook />
-      <SingleBook />
-      <SingleBook />
-      <SingleBook />
-      <SingleBook />
+      {books.map((book: Book) => (
+        <SingleBook key={book.id} book={book} />
+      ))}
     </div>
   );
 }

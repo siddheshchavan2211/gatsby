@@ -14,15 +14,19 @@ import {
   ThumbsUpIcon,
 } from "lucide-react";
 
-function SingleBook() {
+interface SingleBookProps {
+  book: Book;
+}
+
+function SingleBook({ book }: SingleBookProps) {
   return (
     <Card className="w-72">
       <CardHeader>
-        <CardTitle>F. Scott Fitzgerald</CardTitle>
-        <CardDescription>Priority: 4</CardDescription>
+        <CardTitle>{book.author}</CardTitle>
+        <CardDescription>Priority: {book.likes}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-xl">The Great Gatsby</p>
+        <p className="text-xl">{book.title}</p>
       </CardContent>
       <CardFooter className="flex gap-1">
         <Button variant="outline">
