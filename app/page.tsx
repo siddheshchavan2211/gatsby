@@ -4,19 +4,8 @@ import { HeroHighlight } from "@/components/hero-highlight";
 import AddBook from "@/components/AddBook";
 import ListBooks from "@/components/ListBooks";
 import { useReducer } from "react";
-
-const booksReducer = (state: Book[], action: Action) => {
-  return [];
-};
-
-const demoBooks: Book[] = [
-  {
-    id: "1",
-    title: "Next.js Book",
-    author: "Vercel",
-    likes: 8,
-  },
-];
+import { booksReducer } from "@/lib/reducer";
+import { demoBooks } from "@/lib/demo-books";
 
 function Page() {
   const [books, dispatch] = useReducer(booksReducer, demoBooks);
@@ -28,7 +17,7 @@ function Page() {
       </HeroHighlight>
 
       <section className="max-w-96 mx-auto my-10 px-4">
-        <AddBook />
+        <AddBook dispatch={dispatch} />
       </section>
 
       <section className="mx-auto px-4 ">
