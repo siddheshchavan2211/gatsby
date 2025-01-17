@@ -7,12 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
-import {
-  BadgeMinus,
-  CrossIcon,
-  ThumbsDownIcon,
-  ThumbsUpIcon,
-} from "lucide-react";
+import { BadgeMinus, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
 
 interface SingleBookProps {
   book: Book;
