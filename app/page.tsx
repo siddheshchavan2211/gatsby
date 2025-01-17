@@ -15,7 +15,9 @@ function Page() {
         <AddBook />
       </section>
 
-      <section className="mx-auto px-4 ">{/* <ListBooks /> */}</section>
+      <section className="mx-auto px-4 ">
+        <ListBooks />
+      </section>
     </main>
   );
 }
